@@ -1,4 +1,3 @@
 # Project 2
 
-Carleton University Coding Bootcamp
-Instructor Demo
+Carleton University Coding Bootcamp - _Instructor Demo_

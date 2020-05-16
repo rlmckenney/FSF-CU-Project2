@@ -32,7 +32,7 @@ app.use(express.static('./public'))
 // Routes
 // =============================================================
 app.get('/', (req, res) => {
-  res.render('index', { appName: 'Project 2' })
+  res.render('index', { appName: 'Project 2 - Demo' })
 })
 
 // Syncing our sequelize models and then starting our express app

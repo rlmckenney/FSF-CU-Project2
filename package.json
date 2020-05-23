@@ -33,7 +33,9 @@
   },
   "homepage": "https://github.com/rlmckenney/FSF-CU-Project2#readme",
   "dependencies": {
+    "argon2": "^0.26.2",
     "express": "^4.17.1",
+    "express-fileupload": "^1.1.7-alpha.3",
     "express-handlebars": "^4.0.4",
     "mysql2": "^2.1.0",
     "sequelize": "^5.21.9"

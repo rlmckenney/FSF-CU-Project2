@@ -5,6 +5,8 @@
 
 // Dependencies
 // =============================================================
+const path = require('path')
+const fileUpload = require('express-fileupload')
 const express = require('express')
 const exphbs = require('express-handlebars')
 
@@ -24,6 +26,12 @@ app.set('view engine', 'handlebars')
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: path.join(__dirname, 'tmp')
+  })
+)
 
 // Allow Express to automatically serve static resource like the
 // HTML, CSS and JavaScript for the frontend client application.
@@ -31,9 +39,8 @@ app.use(express.static('./public'))
 
 // Routes
 // =============================================================
-app.get('/', (req, res) => {
-  res.render('index', { appName: 'Project 2 - Demo' })
-})
+app.use('/users', require('./routes/users'))
+app.get('/', (req, res) => res.render('index', { appName: 'Project 2 - Demo' }))
 
 // Syncing our sequelize models and then starting our express app
 db.sequelize.sync({ force: true }).then(() => {

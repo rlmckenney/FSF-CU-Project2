@@ -65,3 +65,53 @@ fetch(`/api/users/${user.id}`, {
   })
   .catch(console.error)
 ```
+
+## Using debug tools
+
+Every JavaScript developer starts learning to debug their code with `console.log()`, and that works well for smaller applications. But as your project grows in complexity, it is time for better tools.
+
+### In the browser
+
+The developer tools in Chrome and FireFox have great built-in debugger tools. This short [Introduction to Debugger](https://mozilladevelopers.github.io/playground/debugger) tutorial from Mozilla will introduce you to the value and power of these tools.
+
+### VS Code's debugger for Node.js
+
+Now that you have a better idea of how and why to use a debug tool in the browser, you probably want to know if you can use it on the server side with node? **The answer is, yes.**
+
+Start with this 8 minute intro video called [Getting started with Node.js debugging in VS Code](https://www.youtube.com/watch?v=2oFKNL7vYV8). Then have a look at the official [Debugging User Guide](https://code.visualstudio.com/docs/editor/debugging).
+
+#### launch.json
+
+Here is an example `launch.json` file with two different options. The first uses a globally installed version of `nodemon` and let's you add access to the debugger to your existing workflow. The second will launch a `node server` command and attach the debugger. You can start, stop, and restart the server using the debug controls.
+
+```json
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "nodemon",
+      "runtimeExecutable": "nodemon",
+      "program": "${workspaceFolder}/server.js",
+      "restart": true,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": ["<node_internals>/**"]
+    },
+
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Server",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/server.js"
+    }
+  ]
+}
+```
+
+Now experiment with the debugger using your last project to get more comfortable with how it works.
